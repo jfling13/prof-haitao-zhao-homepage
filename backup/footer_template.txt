@@ -1,0 +1,70 @@
+  <footer class="page-foot--fact page-foot">
+			<div class="container color-set--red">
+				<div class="ft-row component-margin--no-top">
+					<div class="ft-row__blk ft-row__blk--left">
+						    <ul class="ft-site-link-list">
+            <li class="ft-site-link-list__item"><a href="/privacy-policy-statement" target="_blank" class="ft-site-link-list__link">Privacy Policy Statement</a></li>
+            <li class="ft-site-link-list__item"><a href="/terms-of-use" target="_blank" class="ft-site-link-list__link">Terms of Use</a></li>
+            <li class="ft-site-link-list__item"><a href="/accessibility" target="_blank" class="ft-site-link-list__link">Accessibility</a></li>
+            <li class="ft-site-link-list__item"><a href="/rcnn/Sitemap" target="_self" class="ft-site-link-list__link">Sitemap</a></li>
+    </ul>
+
+							<p class="cp">Copyright © 2025 The Hong Kong Polytechnic University. All Rights Reserved.</p>
+					</div>
+                    <div class="ft-row__blk ft-row__blk--right">
+                        <div class="ft-social  socal-icon-list">
+                                                                                                                                                                                                                                                                                                                                                                        </div>
+
+                    </div>
+                  </div>
+              </div>
+          </footer>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Banner carousel
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+
+            currentSlideIndex = index;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        function nextSlide() {
+            showSlide(currentSlideIndex + 1);
+        }
+
+        setInterval(nextSlide, 5000);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

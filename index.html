@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      RCMIM - Research Centre for Materials Intelligent Manufacturing
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/content.css" />
+  </head>
+  <body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <section class="banner-carousel" id="home">
+      <div class="banner-slides">
+        <div class="banner-slide active">
+          <img src="images/Photo.jpg" alt="Banner 1" />
+        </div>
+        <div class="banner-slide">
+          <img src="images/Photo2.jpg" alt="Banner 2" />
+        </div>
+      </div>
+      <div class="banner-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+      </div>
+    </section>
+
+    <div class="container-main">
+      <section class="profile-section">
+        <div>
+          <div class="profile-card">
+            <div class="profile-image-container">
+              <img
+                src="images/ZHAO_Haitao.jpg"
+                alt="Prof. Haitao ZHAO"
+                class="profile-image"
+              />
+            </div>
+            <div class="profile-info">
+              <h4>Contact Information</h4>
+              <p><strong>Office:</strong>CD633</p>
+              <p>
+                <strong>Website:</strong><a
+                  href="https://www.polyu.edu.hk/eee/people/academic-staff-and-teaching-staff/prof-zhao-haitao/"
+                  >Home Page</a
+                >
+              </p>
+              <p>
+                <strong>Email:</strong><a
+                  href="mailto:hai-tao.zhao@polyu.edu.hk"
+                  >hai-tao.zhao@polyu.edu.hk</a
+                >
+              </p>
+              <p>
+                <strong>GitHub:</strong><a
+                  href="https://haitaozhao-polyu.github.io//"
+                  target="_blank"
+                  >HaitaoZhao-PolyU</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="profile-content">
+          <h3>Professor Haitao ZHAO</h3>
+          <ul class="profile-positions">
+            <li>
+              <strong
+                >Department of Electrical and Electronic Engineering</strong
+              >
+            </li>
+            <li>
+              <strong
+                >Director of Research Centre for Materials Intelligent
+                Manufacturing</strong
+              >
+            </li>
+            <li>
+              <strong
+                >Academic leader of State Key Laboratory of Ultra-precision
+                Machining Technology (SKL-UPMT)</strong
+              >
+            </li>
+          </ul>
+          <h4>Biography</h4>
+          <p class="profile-description">
+            Professor Zhao obtained his BEng degree (First Class Honours) from
+            Nanchang University in 2010, followed by an MSc and PhD from the
+            University of Nottingham in 2011 and 2015, respectively. His
+            academic career includes significant positions at Zhejiang
+            University, the Massachusetts Institute of Technology (MIT), and the
+            Shenzhen Institutes of Advanced Technology, Chinese Academy of
+            Sciences. Professor Zhao’s research focuses on Material
+            Intelligence, where he integrates robotics, artificial intelligence
+            (AI), and the other data-driven methodologies. His work aims to
+            revolutionise traditional material R&D by developing Robotic Factory
+            (Hardware), powered by an advanced AI Factory (Software). With over
+            100 peer-reviewed publications (citations: 8223, h-index: 52,
+            i10-index: 99), Professor Zhao has authored ground-breaking paper
+            such as ‘A robotic platform for the synthesis of colloidal
+            nanocrystals’ in Nature Synthesis and invited review paper such as
+            ‘Data-Driven Materials Innovation and Applications’ in Advanced
+            Materials. His research has been funded by various prestigious
+            bodies, including: Pioneer Hundred of the Chinese Academy of
+            Sciences (Data-Driven Energy Materials Innovation), National Natural
+            Science Foundation of China (Robot-assisted Programmable Digital
+            Manufacturing of Colloidal Metal Nanocrystals), Pearl River Talents
+            of Guangdong Province (Digital and Intelligent Design of
+            Nano-Materials), Natural Science Foundation of Guangdong Province
+            (Intelligent Manufacturing of Nanocrystal Materials), Shenzhen
+            Natural Science Foundation (Robot-assisted Intelligent Manufacturing
+            of Semiconductor Materials), Tencent Open Research Fund (Application
+            of Machine Learning in Robotic Platforms). Professor Zhao’s research
+            has led to the publication of an invited book with Wiley, Material
+            Intelligence, and the creation of two IEEE standards: P3466
+            (Data-Driven High-throughput Laboratory Intelligence and Automation)
+            and P3467 (Digital Manufacturing and Stability Testing of Perovskite
+            Solar Cells and Modules). He currently serves as an Editor for
+            Artificial Intelligence Chemistry and a Young Editor for InfoMat and
+            Results in Engineering. In addition to his academic work, Professor
+            Zhao is the founder and chair of the International Conference on
+            Data-Driven Materials Innovation and plays an active role in various
+            professional societies and standardisation agencies, including the
+            IEEE Smart Manufacturing Standards Committee, IEEE SA Regional Group
+            of the Guangdong-Hong Kong-Macao Greater Bay Area, and the
+            Guangdong-Hong Kong-Macao Greater Bay Area Standard Innovation
+            Alliance. He is also a Registered Senior Standardisation Engineer in
+            Hong Kong and Guangdong Province.
+          </p>
+
+          <h4>Academic Background</h4>
+          <div class="education-timeline">
+            <div class="education-item">
+              <h4>PhD, University of Nottingham</h4>
+              <p>2015</p>
+            </div>
+            <div class="education-item">
+              <h4>MSc, University of Nottingham</h4>
+              <p>2011</p>
+            </div>
+            <div class="education-item">
+              <h4>BEng (First Class Honours), Nanchang University</h4>
+              <p>2010</p>
+            </div>
+          </div>
+          <p class="profile-description" style="margin-top: 20px">
+            Previous positions include research appointments at Zhejiang
+            University, MIT, and Shenzhen Institutes of Advanced Technology.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="research">
+        <h2 class="section-title">Research Interests</h2>
+
+        <div class="research-interests">
+          <div class="research-card">
+            <h4>Material Intelligence</h4>
+            <p>
+              Advanced research in intelligent materials and their applications
+              in modern manufacturing and technology. Developing novel materials
+              with enhanced properties through AI-driven discovery and
+              optimization processes.
+            </p>
+          </div>
+          <div class="research-card">
+            <h4>Machine Intelligence</h4>
+            <p>
+              Development of AI and machine learning algorithms for materials
+              science and engineering applications. Creating intelligent systems
+              that can predict material behaviors and optimize manufacturing
+              processes.
+            </p>
+          </div>
+          <div class="research-card">
+            <h4>Embodied Intelligence</h4>
+            <p>
+              Integration of robotics and AI to create intelligent systems for
+              materials research and development. Building autonomous systems
+              that can perform complex material characterization and processing
+              tasks.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Load Common Templates -->
+    <script src="js/common.js"></script>
+
+    <script>
+      // Banner carousel
+      let currentSlideIndex = 0;
+      const slides = document.querySelectorAll(".banner-slide");
+      const dots = document.querySelectorAll(".dot");
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove("active");
+          dots[i].classList.remove("active");
+        });
+
+        currentSlideIndex = index;
+        if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+        if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+
+        slides[currentSlideIndex].classList.add("active");
+        dots[currentSlideIndex].classList.add("active");
+      }
+
+      function currentSlide(index) {
+        showSlide(index);
+      }
+
+      function nextSlide() {
+        showSlide(currentSlideIndex + 1);
+      }
+
+      setInterval(nextSlide, 5000);
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

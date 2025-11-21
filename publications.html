@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - RCMIM</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/content.css">
+    <style>
+        .pub-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: pub-counter;
+        }
+        .pub-item {
+            padding: 25px 0 25px 40px;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            counter-increment: pub-counter;
+        }
+        .pub-item:before {
+            content: "[" counter(pub-counter) "]";
+            position: absolute;
+            left: 0;
+            top: 25px;
+            font-weight: 600;
+            color: #8B0000;
+            font-size: 15px;
+        }
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+        .pub-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .pub-authors {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+        .corresponding-author {
+            font-weight: 700;
+            color: #333;
+        }
+        .corresponding-author sup {
+            color: #8B0000;
+            font-weight: 700;
+        }
+        .pub-journal {
+            font-size: 14px;
+            color: #8B0000;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .pub-doi {
+            font-size: 13px;
+        }
+        .pub-doi a {
+            color: #8B0000;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .pub-doi a:hover {
+            border-bottom-color: #8B0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Main Content -->
+    <div class="container-main" style="max-width: 900px; margin: 60px auto; padding: 40px 60px;">
+        <section class="section">
+            <h2 style="font-size: 32px; font-weight: 400; color: #333; margin-bottom: 10px; border-bottom: 2px solid #8B0000; padding-bottom: 15px;">Publications</h2>
+            <p style="color: #666; font-size: 14px; margin-bottom: 50px;">Representative Publications on Interdisciplinary Research of Robotics, AI and Materials</p>
+
+            <ol class="pub-list">
+                <!-- Publication 1 -->
+                <li class="pub-item">
+                    <div class="pub-title">A robotic platform for the synthesis of colloidal nanocrystals</div>
+                    <div class="pub-authors"><span class="corresponding-author">Haitao Zhao<sup>*</sup></span>, Wei Chen, Hao Huang, Zhehao Sun, Zijian Chen, Lingjun Wu, Baicheng Zhang, Fuming Lai, Zhuo Wang, Mukhtar Lawan Adam, Cheng Heng Pang, Paul K Chu, Yang Lu, Tao Wu, Jun Jiang*, Zongyou Yin*, Xue-Feng Yu*. </div>
+                    <div class="pub-journal">Nature Synthesis</div>
+                    <div class="pub-doi"><a href="https://doi.org/10.1038/s44160-023-00250-5" target="_blank">DOI: 10.1038/s44160-023-00250-5</a></div>
+                </li>
+
+                <!-- Publication 2 -->
+                <li class="pub-item">
+                    <div class="pub-title">Material intelligence by the convergence of artificial intelligence and robotic platforms</div>
+                    <div class="pub-authors">Xinyu Zhang, Zijian Chen, Feibei Chen, Billy Fanady, Boyuan Wang, Zongming Ni, Shumin Zhou, Junzhi Ye, GuanHua Chen, Jie Liu, Robert L. Z. Hoye, Xiaobo Li, Samantha Y. Chong, Wei Feng, Chi-yung Chung, Ching-chuen Chan, Linjiang Chen*, Han Hao*, Alán Aspuru-Guzik, Jun Jiang*, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span></div>
+                    <div class="pub-journal">Nexus</div>
+                    <!-- <div class="pub-doi"><a href="https://doi.org/10.1016/j.ynexs.2024.100025" target="_blank">DOI: 10.1016/j.ynexs.2024.100025</a></div> -->
+                </li>
+
+                <!-- Publication 3 -->
+                <li class="pub-item">
+                    <div class="pub-title">Data-Driven Controlled Synthesis of Oriented Quasi-Spherical CsPbBr3 Perovskite Materials</div>
+                    <div class="pub-authors">Shaohui Liu, Zijian Chen, Yingming Liu, Lingjun Wu, Boyuan Wang, Zixuan Wang, Bobin Wu, Xinyu Zhang, Jie Zhang, Mengyun Chen, Hao Huang*, Junzhi Ye*, Paul K Chu, Xue‐Feng Yu, Lakshminarayana Polavarapu, Robert LZ Hoye, Feng Gao, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span></div>
+                    <div class="pub-journal">Angewandte Chemie</div>
+                    <div class="pub-doi"><a href="files/3.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 4 -->
+                <li class="pub-item">
+                    <div class="pub-title">Data-Driven Fine Element Tuning of Halide Double Perovskite for Enhanced Photoluminescence</div>
+                    <div class="pub-authors">Lingjun Wu, Zijian Chen, Zhongcheng Yuan, Bobin Wu, Shaohui Liu, Zixuan Wang, Jonathan P Mailoa, Chenru Duan, Hao Huang*, Chang‐Yu Hsieh*, Xue‐Feng Yu*, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span></div>
+                    <div class="pub-journal">Advanced Optical Materials</div>
+                    <div class="pub-doi"><a href="files/4.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 5 -->
+                <li class="pub-item">
+                    <div class="pub-title">Navigating materials chemical space to discover new battery electrodes using machine learning</div>
+                    <div class="pub-authors">Mukhtar Lawan Adam, Oyawale Adetunji Moses, Jonathan Pradana Mailoa, Chang-Yu Hsieh*, Xue-Feng Yu*, Hao Li*, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span></div>
+                    <div class="pub-journal">Energy Storage Materials</div>
+                    <div class="pub-doi"><a href="files/5.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 6 -->
+                <li class="pub-item">
+                    <div class="pub-title">Machine learning and robot-assisted synthesis of diverse gold nanorods via seedless approach</div>
+                    <div class="pub-authors">Oyawale Adetunji Moses, Mukhtar Lawan Adam, Zijian Chen, Collins Izuchukwu Ezeh, Hao Huang, Zhuo Wang, Zixuan Wang, Boyuan Wang, Wentao Li, Chensu Wang, Zongyou Yin*, Yang Lu*, Xue-Feng Yu*, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span></div>
+                    <div class="pub-journal">Artificial Intelligence Chemistry</div>
+                    <div class="pub-doi"><a href="files/6.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 7 -->
+                <li class="pub-item">
+                    <div class="pub-title">Data-Driven Materials Innovation and Applications</div>
+                    <div class="pub-authors">Zhuo Wang, Zhehao Sun, Hang Yin, Xinghui Liu, Jinlan Wang, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span>, Cheng Heng Pang*, Tao Wu, Shuzhou Li*, Zongyou Yin*, Xue‐Feng Yu</div>
+                    <div class="pub-journal">Advanced Materials</div>
+                    <div class="pub-doi"><a href="files/7.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 8 -->
+                <li class="pub-item">
+                    <div class="pub-title">Machine Learning-Aided Crystal Facet Rational Design with Ionic Liquid Controllable Synthesis</div>
+                    <div class="pub-authors">Fuming Lai, Zhehao Sun, Sandra Elizabeth Saji, Yichuan He, Xuefeng Yu, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span>, Haibo Guo*, Zongyou Yin*</div>
+                    <div class="pub-journal">Small</div>
+                    <div class="pub-doi"><a href="files/8.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 9 -->
+                <li class="pub-item">
+                    <div class="pub-title">Robotic platform for accelerating the high-throughput study of silver nanocrystals in sensitive/selective Hg<sup>2+</sup> detection</div>
+                    <div class="pub-authors"> Lixiang Xing, Zijian Chen, Wei Chen, Paul K Chu, Xue-Feng Yu*, <span class="corresponding-author">Haitao Zhao<sup>*</sup></span></div>
+                    <div class="pub-journal">Chemical Engineering Journal</div>
+                    <div class="pub-doi"><a href="files/9.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 10 -->
+                <li class="pub-item">
+                    <div class="pub-title">Machine learning-enhanced flexible mechanical sensing</div>
+                    <div class="pub-authors">Yuejiao Wang, Mukhtar Lawan Adam, Yunlong Zhao, Weihao Zheng, Libo Gao*, Zongyou Yin*, <span class="corresponding-author">Haitao Zhao</span></div>
+                    <div class="pub-journal">Nano-Micro Letters</div>
+                    <div class="pub-doi"><a href="files/10.pdf" target="_blank">Download PDF</a></div>
+                </li>
+
+                <!-- Publication 11 -->
+                <li class="pub-item">
+                    <div class="pub-title">Data-Driven structural descriptor for predicting platinum‐based alloys as oxygen reduction electrocatalysts</div>
+                    <div class="pub-authors">Xue Zhang, Zhuo Wang, Adam Mukhtar Lawan, Jiahong Wang, Chang‐Yu Hsieh, Chenru Duan, Cheng Heng Pang, Paul K Chu, Xue‐Feng Yu*,<span class="corresponding-author">Haitao Zhao<sup>*</sup></span></div>
+                    <div class="pub-journal">InfoMat</div>
+                    <div class="pub-doi"><a href="files/11.pdf" target="_blank">Download PDF</a></div>
+                </li>
+            </ol>
+        </section>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>

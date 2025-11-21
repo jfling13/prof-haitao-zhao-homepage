@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCMIM - Research Centre for Materials Intelligent Manufacturing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Header Styles - Copied from RCNN */
+        .page-head {
+            position: relative;
+            background: #fff;
+        }
+
+        .fact-header__top {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-top__container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-wrap__left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 100px;
+            max-width: 350px;
+            object-fit: contain;
+        }
+
+        .header-wrap__right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .fn-blk-wrap {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .fn-blk__link {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: #666;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .fn-blk__link:hover {
+            color: #333;
+        }
+
+        .q-access-blk__trigger {
+            color: #666;
+            font-size: 14px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .q-access-blk__trigger:after {
+            content: ' ▼';
+            font-size: 10px;
+        }
+
+        .q-access-blk__trigger:hover {
+            color: #333;
+        }
+
+        /* PolyU Red Banner */
+        .fact-logo-container {
+            background: linear-gradient(135deg, #8B0000 0%, #A01010 100%);
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+            padding: 18px 40px 18px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .fact-main-logo {
+            max-height: 60px;
+            width: auto;
+        }
+
+        /* Navigation */
+        .header-bottom {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-bottom__container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .mn__list--1 {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mn__item--1 {
+            position: relative;
+        }
+
+        .mn__link--1 {
+            display: block;
+            padding: 16px 24px;
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .mn__link--1:hover,
+        .mn__link--1.active {
+            color: #000;
+            border-bottom-color: #0066cc;
+        }
+
+        .mn__item--1.has-sub:hover .mn-sm__list--2 {
+            display: block;
+        }
+
+        .mn-sm__list--2 {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            min-width: 250px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-top: 3px solid #8B0000;
+            list-style: none;
+            padding: 10px 0;
+            margin: 0;
+            z-index: 1000;
+        }
+
+        .mn-sm__link--2 {
+            display: block;
+            padding: 10px 20px;
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .mn-sm__link--2:hover {
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        /* Banner Carousel */
+        .banner-carousel {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .banner-slides {
+            position: relative;
+            height: 100%;
+        }
+
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: #fff;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Main Container */
+        .container-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+        }
+
+        .profile-image-container {
+            width: 100%;
+            height: 280px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .profile-info h4 {
+            color: #8B0000;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-bottom: 2px solid #8B0000;
+            padding-bottom: 8px;
+        }
+
+        .profile-info p {
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .profile-info a {
+            color: #8B0000;
+            text-decoration: none;
+        }
+
+        .profile-info a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-content h3 {
+            color: #8B0000;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #8B0000;
+            padding-bottom: 15px;
+        }
+
+        .profile-content h4 {
+            color: #333;
+            font-size: 22px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .profile-description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            color: #8B0000;
+            font-size: 32px;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #8B0000;
+            padding-bottom: 15px;
+        }
+
+        .research-interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .research-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #8B0000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .research-card h4 {
+            color: #8B0000;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .research-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #8B0000 0%, #660000 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(139,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+        .education-timeline {
+            margin-top: 30px;
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 40px;
+            border-left: 3px solid #8B0000;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            background-color: #8B0000;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #8B0000;
+        }
+
+        .education-item h4 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .education-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .publication-list {
+            margin-top: 30px;
+        }
+
+        .publication-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #8B0000;
+            transition: all 0.3s;
+        }
+
+        .publication-item:hover {
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .publication-item h4 {
+            color: #8B0000;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .publication-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #8B0000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+
+        .highlight-box h4 {
+            color: #8B0000;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box ul {
+            margin-left: 25px;
+            line-height: 2;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2c2c;
+            color: #ccc;
+            padding: 40px 40px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #8B0000;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Icons */
+        .ico-search:before { content: '🔍'; }
+        .ico-share:before { content: '🔗'; }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .header-top__container {
+                padding: 20px 30px;
+            }
+            .header-bottom__container {
+                padding: 0 30px;
+            }
+            .profile-section {
+                grid-template-columns: 1fr;
+            }
+            .profile-card {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-carousel {
+                height: 400px;
+            }
+            .container-main {
+                padding: 40px 20px;
+            }
+            .research-interests,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-head fact-header">
+        <div class="header-wrap">
+            <div class="fact-header__top">
+                <div class="container header-top__container">
+                    <div class="header-wrap__left">
+                        <div class="logo-container">
+                            <a href="/rcnn" target="">
+                                <img src="images/logo.png" alt="RCNN logo" class="main-logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="header-wrap__right">
+                        <div class="fn-blk-wrap">
+                            <div class="fn-blk sitesearch-blk">
+                                <button class="fn-blk__link"><span class="ico-search" aria-hidden="true"></span></button>
+                            </div>
+                            <div class="fn-blk share-blk">
+                                <button class="fn-blk__link"><span class="ico-share" aria-hidden="true"></span></button>
+                            </div>
+                            <div class="fn-blk q-access-blk d-none d-lg-flex">
+                                <button class="q-access-blk__trigger">Quick Access</button>
+                            </div>
+                            <div class="fact-logo-container">
+                                <a href="https://www.polyu.edu.hk/en/" target="_blank">
+                                    <img src="/assets/img/fact-logo-1x.png" srcset="https://www.polyu.edu.hk/assets/img/fact-logo-1x.png 1x, https://www.polyu.edu.hk/assets/img/fact-logo-2x.png 2x" alt="PolyU" class="fact-main-logo">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-bottom d-none d-lg-block">
+                    <div class="container header-bottom__container">
+                        <div class="mn mn--fact color-set--red">
+                            <nav class="mn__nav">
+                                <ul class="mn__list--1">
+                                    <li class="mn__item--1">
+                                        <a href="#home" class="mn__link--1 active">Home</a>
+                                    </li>
+                                    <li class="mn__item--1 has-sub">
+                                        <span class="mn__link--1">People</span>
+                                        <ul class="mn-sm__list--2">
+                                            <li><a href="#director" class="mn-sm__link--2">Director</a></li>
+                                            <li><a href="#faculty" class="mn-sm__link--2">Faculty Members</a></li>
+                                            <li><a href="#researchers" class="mn-sm__link--2">Researchers</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mn__item--1">
+                                        <a href="#research" class="mn__link--1">Research</a>
+                                    </li>
+                                    <li class="mn__item--1">
+                                        <a href="#publication" class="mn__link--1">Publications</a>
+                                    </li>
+                                    <li class="mn__item--1 has-sub">
+                                        <span class="mn__link--1">News and Events</span>
+                                        <ul class="mn-sm__list--2">
+                                            <li><a href="#news" class="mn-sm__link--2">News</a></li>
+                                            <li><a href="#events" class="mn-sm__link--2">Events</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mn__item--1">
+                                        <a href="#opportunities" class="mn__link--1">Opportunities</a>
+                                    </li>
+                                    <li class="mn__item--1 has-sub">
+                                        <span class="mn__link--1">About RCNN</span>
+                                        <ul class="mn-sm__list--2">
+                                            <li><a href="#introduction" class="mn-sm__link--2">Introduction</a></li>
+                                            <li><a href="#contact" class="mn-sm__link--2">Contact us</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="banner-carousel" id="home">
+        <div class="banner-slides" style="width: 90%; margin: 0 auto;">
+            <div class="banner-slide active">
+                <img src="images/Photo.jpg" alt="Banner 1">
+            </div>
+            <div class="banner-slide">
+                <img src="images/Photo2.jpg" alt="Banner 2">
+            </div>
+        </div>
+        <div class="banner-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+        </div>
+    </section>
+
+    <div class="container-main">
+        <section class="profile-section">
+            <div>
+                <div class="profile-card">
+                    <div class="profile-image-container">
+                        <img src="images/ZHAO_Haitao.jpg" alt="Prof. Haitao ZHAO" class="profile-image">
+                    </div>
+                    <div class="profile-info">
+                        <h4>Contact Information</h4>
+                        <p><strong>Office:</strong> CD633</p>
+                        <p><strong>Email:</strong><br><a href="mailto:hai-tao.zhao@polyu.edu.hk">hai-tao.zhao@polyu.edu.hk</a></p>
+                        <p><strong>GitHub:</strong><br><a href="https://github.com/HaitaoZhao-PolyU" target="_blank">HaitaoZhao-PolyU</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <h3>About Prof. Haitao ZHAO</h3>
+                <p class="profile-description">
+                    Prof. Haitao ZHAO is a Professor in the Department of Electrical and Electronic Engineering at The Hong Kong Polytechnic University. He serves as the Director of the Research Centre for Materials Intelligent Manufacturing (RCMIM) and is the Academic Leader of the State Key Laboratory of Ultra-precision Machining Technology.
+                </p>
+                <p class="profile-description">
+                    His research integrates robotics, artificial intelligence (AI), and data-driven methodologies to revolutionize material research and development. The goal is to revolutionize material R&D through Robotic Factory (Hardware) and AI Factory (Software).
+                </p>
+
+                <h4>Academic Background</h4>
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <h4>PhD, University of Nottingham</h4>
+                        <p>2015</p>
+                    </div>
+                    <div class="education-item">
+                        <h4>MSc, University of Nottingham</h4>
+                        <p>2011</p>
+                    </div>
+                    <div class="education-item">
+                        <h4>BEng (First Class Honours), Nanchang University</h4>
+                        <p>2010</p>
+                    </div>
+                </div>
+                <p class="profile-description" style="margin-top: 20px;">
+                    Previous positions include research appointments at Zhejiang University, MIT, and Shenzhen Institutes of Advanced Technology.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="research">
+            <h2 class="section-title">Research Interests</h2>
+            <div class="research-interests">
+                <div class="research-card">
+                    <h4>Material Intelligence</h4>
+                    <p>Advanced research in intelligent materials and their applications in modern manufacturing and technology. Developing novel materials with enhanced properties through AI-driven discovery and optimization processes.</p>
+                </div>
+                <div class="research-card">
+                    <h4>Machine Intelligence</h4>
+                    <p>Development of AI and machine learning algorithms for materials science and engineering applications. Creating intelligent systems that can predict material behaviors and optimize manufacturing processes.</p>
+                </div>
+                <div class="research-card">
+                    <h4>Embodied Intelligence</h4>
+                    <p>Integration of robotics and AI to create intelligent systems for materials research and development. Building autonomous systems that can perform complex material characterization and processing tasks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Research Achievements</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Peer-Reviewed Publications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8,223</div>
+                    <div class="stat-label">Citations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">52</div>
+                    <div class="stat-label">H-Index</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="publication">
+            <h2 class="section-title">Selected Publications</h2>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <h4>A robotic platform for the synthesis of colloidal nanocrystals</h4>
+                    <p><em>Nature Synthesis</em> - A groundbreaking work demonstrating the integration of robotics and AI in materials synthesis.</p>
+                </div>
+                <div class="publication-item">
+                    <h4>Data-Driven Materials Innovation and Applications</h4>
+                    <p><em>Advanced Materials</em> - Comprehensive review of data-driven approaches in materials science and their industrial applications.</p>
+                </div>
+                <div class="publication-item">
+                    <h4>Material Intelligence (Book)</h4>
+                    <p><em>Wiley</em> - Comprehensive book on the intersection of materials science and artificial intelligence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="teaching">
+            <h2 class="section-title">Teaching</h2>
+            <p class="profile-description">
+                Prof. Zhao is actively involved in teaching and mentoring students at both undergraduate and graduate levels.
+            </p>
+            <div class="highlight-box">
+                <h4>Research Topics for Students</h4>
+                <ul>
+                    <li>Robotic materials synthesis and characterization</li>
+                    <li>AI-driven materials discovery and optimization</li>
+                    <li>Data-driven high-throughput experimentation</li>
+                    <li>Digital manufacturing technologies</li>
+                    <li>Intelligent manufacturing systems</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="service">
+            <h2 class="section-title">Professional Service</h2>
+            <h4>IEEE Standards Development</h4>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <h4>IEEE P3466</h4>
+                    <p>Data-Driven High-throughput Laboratory Intelligence and Automation</p>
+                </div>
+                <div class="publication-item">
+                    <h4>IEEE P3467</h4>
+                    <p>Digital Manufacturing of Perovskite Solar Cells</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="join">
+            <h2 class="section-title">Join Us</h2>
+            <p class="profile-description">
+                We are always looking for talented and motivated researchers to join our team.
+            </p>
+            <div class="highlight-box">
+                <h4>Available Positions</h4>
+                <ul>
+                    <li><strong>PhD Students</strong> - Full scholarships available for exceptional candidates</li>
+                    <li><strong>Postdoctoral Research Fellows</strong> - Competitive salary and research support</li>
+                    <li><strong>Visiting Scholars</strong> - Short-term and long-term positions available</li>
+                    <li><strong>Research Assistants</strong> - Opportunities for undergraduate and master's students</li>
+                </ul>
+                <p style="margin-top: 20px;">
+                    <strong style="color: #8B0000;">Contact:</strong> <a href="mailto:hai-tao.zhao@polyu.edu.hk">hai-tao.zhao@polyu.edu.hk</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://www.polyu.edu.hk" target="_blank">PolyU Homepage</a></li>
+                        <li><a href="https://www.polyu.edu.hk/eee/" target="_blank">Department of EEE</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#publication">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Research Areas</h4>
+                    <ul>
+                        <li><a href="#research">Material Intelligence</a></li>
+                        <li><a href="#research">Machine Intelligence</a></li>
+                        <li><a href="#research">Embodied Intelligence</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Research Centre for Materials Intelligent Manufacturing (RCMIM)</p>
+                    <p>The Hong Kong Polytechnic University</p>
+                    <p>Email: <a href="mailto:hai-tao.zhao@polyu.edu.hk">hai-tao.zhao@polyu.edu.hk</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RCMIM. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Banner carousel
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+
+            currentSlideIndex = index;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        function nextSlide() {
+            showSlide(currentSlideIndex + 1);
+        }
+
+        setInterval(nextSlide, 5000);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
